@@ -6,12 +6,12 @@ import {View, // caixa / área da tela
   Text, // textos
   Button, // botão
   StyleSheet, // estilos
-  TouchableOpacity, // botão custumizável
-  TextInput
+  TouchableOpacity,
+   TextInput // botão custumizável
 } from "react-native-web";
 
 // componente principal APP
-export default function Jogador1(){
+export default function Jogador2(){
   // cria um estado chamado (variável php) chamada "pontos"
   // pontos = valor atual
   // setPontos = função para alterar o valor
@@ -27,9 +27,9 @@ export default function Jogador1(){
   // função para diminuir 1 ponto
   function diminuir(){
     // pega o valor atual e subtrai -1
-    setPontos (pontos-1);
 
-    if (pontos-1 < 0){
+    setPontos (pontos-1);
+ if (pontos-1 < 0){
         setPontos (0);
     }
   }
@@ -38,10 +38,6 @@ export default function Jogador1(){
   function resetar (){
     // volta o valor para 
     setPontos (0);
-  }
-
-  function nome (){
-    const [text, setText] = useState('');
   }
 
   // tudo que esta no RETURN aparece na tela
@@ -54,6 +50,7 @@ export default function Jogador1(){
       </Text>
       {/* Mostra o valor dos pontos */}
       <Text style={styles.pontos}>{pontos}</Text>
+
       <View>
         <TextInput style={styles.nome} placeholder="  Escreva seu nome: 💻"
         />
@@ -71,6 +68,7 @@ export default function Jogador1(){
         <Text style={styles.textoBotao}>Resetar</Text>
         </TouchableOpacity>
     </View>
+    
   );
 }
 
@@ -81,7 +79,7 @@ const styles = StyleSheet.create({
     // ocupa a tela toda
     flex: 1,
     // cor de fundo
-    backgroundColor: '#000000ff',
+    backgroundColor: '#121212',
     // centraliza horizontalmente
     alignItems: 'center',
     // centraliza verticalmente
@@ -107,7 +105,7 @@ const styles = StyleSheet.create({
     // tamanho gigante
     fontSize: 80,
     // cor branca
-    color: '#ffffffff',
+    color: '#ffffff',
     // espaço abaixo
     marginBottom: 40,
     // negrito
@@ -168,3 +166,5 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   }
 });
+
+
