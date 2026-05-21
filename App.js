@@ -1,147 +1,35 @@
-// importa o React e o useState
-// useState serve para criar valores que podem mudar na tela
-import  React, {useState} from "react";
-//importa compónentes nativos de react native
-import {View, // caixa / área da tela
-  Text, // textos
-  Button, // botão
-  StyleSheet, // estilos
-  TouchableOpacity // botão custumizável
-} from "react-native-web";
+//Importação para o menu lateral funcionar
+import 'react-native-gesture-handler';
 
-// componente principal APP
-export default function App(){
-  // cria um estado chamado (variável php) chamada "pontos"
-  // pontos = valor atual
-  // setPontos = função para alterar o valor
-  // 0 = valor inicial
-  const [pontos, setPontos] = useState(0);
+//Importar o container da navegação
+// ele controla todas as telas do aap
+import { NavigationContainer } from '@react-navigation/native';
 
-  // função para aumentar 1 ponto
-  function aumentar(){
-    // pega o valor auto e soma +1
-    setPontos (pontos+1);
-  }
+//Importar o menu lateral (DRAWER)
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-  // função para diminuir 1 ponto
-  function diminuir(){
-    // pega o valor atual e subtrai -1
-    setPontos (pontos-1);
-  }
-  
-  // função para resetar o contador
-  function resetar (){
-    // volta o valor para 
-    setPontos (0);
-  }
+//Importar as telas 
+import Jogador1 from './componentes/Jogador1';
 
-  // tudo que esta no RETURN aparece na tela
-  return(
-    // View principal do APP
-    <View style={styles.container}>
-      {/* Título do APP */}
-      <Text style={styles.titulo}>
-        🎮 Contador Gamer
-      </Text>
-      {/* Mostra o valor dos pontos */}
-      <Text style={styles.pontos}>{pontos}</Text>
-      {/* Área dos botões +1 e -1 */}
-      <View style={styles.areaBotoes}>
-        <TouchableOpacity onPress={aumentar} style={styles.botao}>
-        <Text style={styles.textoBotao}>+1</Text>
-        </TouchableOpacity>
-         <TouchableOpacity onPress={diminuir} style={styles.botao}>
-        <Text style={styles.textoBotao}>-1</Text>
-        </TouchableOpacity>
-      </View>
-       <TouchableOpacity onPress={resetar} style={styles.botaoReset}>
-        <Text style={styles.textoBotao}>Resetar</Text>
-        </TouchableOpacity>
-    </View>
+//Cria o Drawer
+const Drawer = createDrawerNavigator();
+
+//Componente principal do APP
+export default function APP() {
+  // o que esta dentro do return aparece na tela
+  return (
+    // container principal da navegação
+    <NavigationContainer>
+      {/* menu lateral */}
+      <Drawer.Navigator>
+        {/*tela do Jogador1 */}
+        <Drawer.Screen
+          //nome que aparece no menu
+          name="1 Jogador"
+          //componente que será aberto
+          component={Jogador1}
+        />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
-
-// ÁREA DE ESTILOS DO APP
-const styles = StyleSheet.create({
-  // estilo da tela principal
-  container: {
-    // ocupa a tela toda
-    flex: 1,
-    // cor de fundo
-    backgroundColor: '#121212',
-    // centraliza horizontalmente
-    alignItems: 'center',
-    // centraliza verticalmente
-    justifyContent: 'center',
-    // espaçamento interno
-    padding: 20,
-  },
-
-  // ESTILO DO TÍTULO
-  titulo: {
-    // tamanho da fonte
-    fontSize: 32,
-    // cor do texto
-    color: '#00ff88',
-    // texto em negrito
-    fontWeight: 'bold',
-    // espaço abaixo
-    marginBottom: 30,
-  },
-
-  // ESTILO DOS PONTOS
-  pontos: {
-    // tamanho gigante
-    fontSize: 80,
-    // cor branca
-    color: '#ffffff',
-    // espaço abaixo
-    marginBottom: 40,
-    // negrito
-    fontWeight: 'bold',
-  },
-
-  // ÁREA DOS BOTÕES
-  areaBotoes: {
-    // deixa um botão ao lado do outro
-    flexDirection: 'row',
-    // espaço abaixo
-    marginBottom: 20,
-  },
-
-  // ESTILO DOS BOTÕES +1 E -1
-  botao: {
-    // cor do botão
-    backgroundColor: '#00ff88',
-    // espaçamento vertical
-    paddingVertical: 15,
-    // espaçamento horizontal
-    paddingHorizontal: 30,
-    // arredonda as pontas
-    borderRadius: 12,
-    // espaçamento entre botões
-    marginHorizontal: 10,
-  },
-
-  // ESTILO DO BOTÃO RESETAR
-  botaoReset: {
-    // cor vermelha
-    backgroundColor: '#ff3b30',
-    // espaçamento vertical
-    paddingVertical: 15,
-    // espaçamento horizontal
-    paddingHorizontal: 40,
-    // bordas arredondadas
-    borderRadius: 12,
-  },
-
-  // ESTILO DO TEXTO DOS BOTÕES
-  textoBotao: {
-    // tamanho da letra
-    fontSize: 22,
-    // cor do texto
-    color: '#000',
-    // negrito
-    fontWeight: 'bold',
-  },
-});
