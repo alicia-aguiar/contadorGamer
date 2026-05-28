@@ -10,8 +10,10 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 //Importar as telas 
 import Jogador1 from './componentes/Jogador1';
-import Jogador2 from './componentes/Jogador2';
+// import Jogador2 from './componentes/Jogador2-atividade';
 import Jogador3 from './componentes/Jogador3';
+import Jogador2 from './componentes/Jogador2';
+
 
 //Cria o Drawer
 const Drawer = createDrawerNavigator();
